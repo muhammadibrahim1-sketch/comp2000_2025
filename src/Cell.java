@@ -10,7 +10,6 @@ public class Cell {
         this.col = col;
     }
 
-    /** Drawing this cell at (x,y) with given size. */
     public void paint(Graphics g, int x, int y, int size, boolean highlighted) {
         if (highlighted) {
             g.setColor(Color.LIGHT_GRAY);
