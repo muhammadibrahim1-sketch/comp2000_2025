@@ -26,6 +26,46 @@ We will also need to give an identity to each "cell" of the grid and make each c
 
 Modify the program to make these things happen.  Make a `Grid` class and a `Cell` class and organise them in a sensible way.  What fields and methods should each class have?
 
+
+
+
+
+
+
+
+
+
+
+
+# Week 03 Worksheet : My work for this week
+
+## Task 3
+Created a 720×720 window and drew a 20×20 grid of squares.  
+Each square was 35×35 pixels, and the whole grid was offset 10 pixels from the top and left.  
+This produced the required grid layout.
+
+## Task 4
+Refactored the code so the grid and its cells are objects:  
+- `Grid.java` represents the whole board and contains a 2D array of `Cell` objects.  
+- `Cell.java` represents a single square and knows how to draw itself.  
+- `Main.java` now only creates the window and delegates drawing to the `Grid`.  
+This gave the grid and cells their own identity, matching OOP principles.
+
+## Task 5
+Added functionality so that the cell under the mouse is highlighted.  
+- `Main.Canvas` listens for mouse movement.  
+- The mouse coordinates are converted to a grid row/column.  
+- The corresponding cell is marked as highlighted.  
+- When painting, that cell is filled grey while others remain outlined.  
+
+## Reflection
+This week learnt how to:
+- Draw a grid using loops and coordinate calculations.  
+- Apply object-oriented design by splitting responsibilities into `Main`, `Grid`, and `Cell`.  
+- Handle mouse input to add interactivity.  
+By the end, the program displayed a grid where the hovered cell was clearly highlighted.
+
+
 # Task 5
 
 Anything that is a `JFrame` or `JPanel` can find out the position of the mouse using `getMousePosition`.  Modify your program so that mousing over a cell will "highlight" it.  Highlighted cells should be drawn in grey.  You may have to think about how you will get the mouse position from the place you can read it, to the place it is needed (the `paint` method of a `Cell` object).
