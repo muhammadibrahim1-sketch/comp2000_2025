@@ -9,16 +9,29 @@ public class Stage {
   Grid grid;
   List<Actor> actors;
 
+  //added inventory for items
+  Inventory<Item> items;
+
   public Stage() {
     grid = new Grid();
     actors = new ArrayList<Actor>();
     actors.add(new Cat(grid.cellAtColRow(0, 0).get()));
     actors.add(new Dog(grid.cellAtColRow(0, 15).get()));
     actors.add(new Bird(grid.cellAtColRow(12, 9).get()));    
+
+    // added: create inventory and add sample items
+    items = new Inventory<>();
+    items.add(new Bone(grid.cellAtColRow(5, 5).get()));
+    items.add(new Fish(grid.cellAtColRow(7, 10).get()));
+    items.add(new Seed(grid.cellAtColRow(15, 3).get()));
   }
 
   public void paint(Graphics g, Point mouseLoc) {
     grid.paint(g, mouseLoc);
+
+    // added paint items before actors
+    items.paintAll(g);
+
     for (Actor a : actors) {
       a.paint(g);
     }
@@ -29,8 +42,6 @@ public class Stage {
       g.drawString(String.valueOf(hoverCell.col) + String.valueOf(hoverCell.row), 740, 30);
     }
   }
-
-  
 
   /** Adding a single actor at runtime. */
   public void addActor(Actor actor) {
