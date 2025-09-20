@@ -19,14 +19,35 @@ public class Stage {
 
   public void paint(Graphics g, Point mouseLoc) {
     grid.paint(g, mouseLoc);
-    for(Actor a: actors) {
+    for (Actor a : actors) {
       a.paint(g);
     }
     Optional<Cell> underMouse = grid.cellAtPoint(mouseLoc);
-    if(underMouse.isPresent()) {
+    if (underMouse.isPresent()) {
       Cell hoverCell = underMouse.get();
       g.setColor(Color.DARK_GRAY);
       g.drawString(String.valueOf(hoverCell.col) + String.valueOf(hoverCell.row), 740, 30);
     }
+  }
+
+  
+
+  /** Adding a single actor at runtime. */
+  public void addActor(Actor actor) {
+    if (actor != null) {
+      actors.add(actor);
+    }
+  }
+
+  /** Adding multiple actors at once. */
+  public void addActors(java.util.Collection<? extends Actor> moreActors) {
+    if (moreActors != null) {
+      actors.addAll(moreActors);
+    }
+  }
+
+  /** Read-only view of actors (preserves encapsulation). */
+  public java.util.List<Actor> getActors() {
+    return java.util.Collections.unmodifiableList(actors);
   }
 }
