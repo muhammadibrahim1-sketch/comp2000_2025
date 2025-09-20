@@ -1,8 +1,29 @@
-# Welcome to COMP2000 - Object Oriented Programming Practices
-## Session 2, 2025
+# Assignment 1 – Grid Items Extension
 
-Please ensure that you follow the weekly updates in this repository
+## What I added (summary)
+- **Items** placed on the grid (Bone, Fish, Seed).
+- A **custom generic** class `Inventory<T extends Item>` to manage items (add/remove/lookup/paint).
+- An **interface** `Item` for any passive grid element that can draw itself and knows its location.
+- An **abstract class** `BaseItem` that shares common behaviour for all items (inheritance).
 
-You are free to clone this repository into your own hosted git environment, such as Github, Bitbucket, or Gitlab.
+## Why this is good design
+- **Interfaces:** `Item` defines what an item must do without dictating how. Any future item type just implements this contract.
+- **Inheritance:** `BaseItem` centralises shared state/behaviour; `Bone`, `Fish`, `Seed` extend it, avoiding code duplication.
+- **Generics (custom):** `Inventory<T extends Item>` is our own generic container with domain-specific methods (`atCell`, `paintAll`, `snapshot`) and compile-time type safety.
 
-*However*, please be aware that any repository containing your assignment code **must** be made private. Any repository with assignment code that is public available, or found to be shared with other students, will be considered a violation of the academic integrity policy.
+## How to run
+- Use Java 11 or Java 21.
+- Run `src/Main.java` → `main`.
+- You’ll see a 20×20 grid. Items render as small coloured circles at preset cells.
+- Hovering still shows the cell label text on the right.
+
+## Where to look in the code
+- `src/Item.java` – interface  
+- `src/BaseItem.java` – abstract base class  
+- `src/Bone.java`, `src/Fish.java`, `src/Seed.java` – concrete items  
+- `src/Inventory.java` – **custom generic** container  
+- `src/Stage.java` – integrates `Inventory<Item>` and paints items
+
+## Future directions (optional)
+- Per-actor `Inventory<Item>` so actors can pick up items.
+- Terrain/biomes via specialised `Cell`s or strategies.
