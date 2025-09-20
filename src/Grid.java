@@ -41,6 +41,7 @@ public class Grid {
     return cellAtColRow(labelToCol(c), r);
   }
 
+  // Task 12
   public Optional<Cell> cellAtPoint(Point p) {
     for(int i=0; i < cells.length; i++) {
       for(int j=0; j < cells[i].length; j++) {
