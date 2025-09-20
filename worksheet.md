@@ -158,3 +158,25 @@ public Optional<Cell> cellAtPoint(Point p)
 🤔 How about we improve the `cellAtColRow` method now we know about optional containers?
 
 🤔 Now that we have `cellAtPoint`, lets use it.  Grow the app window to 1024x720 so we have some clear space to the right of the grid.  In this space, put the details of whatever cell we are hoving over.  For example, you might put the type of cell that is located there, and what it's elevation is.  There are many ways to do this, but one good way is to call `cellAtPoint` while painting the stage and use the resulting cell information.
+
+
+
+
+
+
+## Worksheet Answers – Week 5
+
+### Task 10
+We used a `List<Actor>` (with `ArrayList` implementation) to hold all actors.  
+This avoids repetition in the `paint` method and allows us to easily add or remove actors.  
+Using generics ensures type safety and flexibility, since only `Actor` objects can be stored.
+
+### Task 11
+Instead of relying on just color to distinguish actors, we replaced the `color` field with a `List<Polygon>`.  
+Each actor subclass (`Cat`, `Dog`, `Bird`) now defines its own polygons to represent its unique shape.  
+This makes the game scalable and avoids using external images, while still demonstrating inheritance and generics.
+
+### Task 12
+We added the method `Optional<Cell> cellAtPoint(Point p)` in `Grid`.  
+This safely finds which cell is under a given mouse location without risking null-pointer exceptions.  
+In `Stage`, we use this method to display the column and row of the hovered cell, showing how `Optional` helps us write safer code.
