@@ -69,3 +69,37 @@ Is there a place that you could put all the common parts?
 ### Task 9
 
 Draw a picture of the inheritance hierarchy you have created.  You should (loosely) use [UML notation](http://umich.edu/~eecs381/handouts/UMLNotationSummary.pdf) for your diagram.  You are using UML In this case, and all through this course, only for "a rough sketch of an idea".
+
+
+
+
+
+
+
+
+
+
+# Week 4 Worksheet
+
+## Task 6
+- Refactored `Cell` to **extend `java.awt.Rectangle`**.  
+- The `contains(x,y)` method from the library is now used to check if the mouse is inside a cell.  
+- `Grid` constructs a 20×20 array of `Cell`s with an offset and size.  
+- The highlighted cell is filled grey, and all cells are outlined in black.
+
+## Task 7
+- Introduced an abstract superclass **`Actor`** that stores a `Cell` location and a `Color`.  
+- Added subclasses **`Cat`**, **`Dog`**, and **`Bird`**, each calling `super(inLoc, Color.X)` to set their own colour.  
+- Created a **`Stage`** class that has one `Grid` and multiple `Actor` objects.  
+- The `Stage.paint()` method first draws the grid, then paints each actor.
+
+## Task 8
+- Observed that `Cat`, `Dog`, and `Bird` are nearly identical.  
+- To avoid repetition, the common logic (`loc`, `color`, and `paint(Graphics)`) was moved into the `Actor` superclass.  
+- Each subclass only provides its unique colour in the constructor.  
+- This design avoids duplication and makes the program easier to maintain.
+
+## Task 9
+- Created a UML class diagram to show the **inheritance hierarchy**:  
+
+
