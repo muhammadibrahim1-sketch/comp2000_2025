@@ -1,19 +1,31 @@
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Polygon;
-import java.util.List;
+import java.util.ArrayList;
 
-public abstract class Actor {
-  Color color;
-  Cell loc;
-  List<Polygon> display;
+public class Cat extends Actor {
+  public Cat(Cell inLoc) {
+    loc = inLoc;
+    color = Color.BLUE;
+    display = new ArrayList<>();
 
-  public void paint(Graphics g) {
-    for(Polygon p: display) {
-      g.setColor(color);
-      g.fillPolygon(p);
-      g.setColor(Color.GRAY);
-      g.drawPolygon(p);
-    }
+    // Cat polygons
+    Polygon ear1 = new Polygon();
+    ear1.addPoint(loc.x + 11, loc.y + 5);
+    ear1.addPoint(loc.x + 15, loc.y + 15);
+    ear1.addPoint(loc.x + 7, loc.y + 15);
+
+    Polygon ear2 = new Polygon();
+    ear2.addPoint(loc.x + 22, loc.y + 5);
+    ear2.addPoint(loc.x + 26, loc.y + 15);
+    ear2.addPoint(loc.x + 18, loc.y + 15);
+
+    Polygon face = new Polygon();
+    face.addPoint(loc.x + 5, loc.y + 15);
+    face.addPoint(loc.x + 29, loc.y + 15);
+    face.addPoint(loc.x + 17, loc.y + 30);
+
+    display.add(ear1);
+    display.add(ear2);
+    display.add(face);
   }
 }
