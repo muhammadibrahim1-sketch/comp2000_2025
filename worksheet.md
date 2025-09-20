@@ -100,6 +100,6 @@ Draw a picture of the inheritance hierarchy you have created.  You should (loose
 - This design avoids duplication and makes the program easier to maintain.
 
 ## Task 9
-- Created a UML class diagram to show the **inheritance hierarchy**:  
+It is already done.  
 
 
