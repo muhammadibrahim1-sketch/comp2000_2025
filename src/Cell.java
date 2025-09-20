@@ -5,27 +5,31 @@ import java.awt.Rectangle;
 
 public class Cell extends Rectangle {
   static int size = 35;
+  private final int row;
+  private final int col;
 
-  public Cell(int x, int y) {
+  public Cell(int row, int col, int x, int y) {
     super(x, y, size, size);
+    this.row = row;
+    this.col = col;
   }
 
   public void paint(Graphics g, Point mousePos) {
-    if(contains(mousePos)) {
-      g.setColor(Color.GRAY);
+    if (mousePos != null && contains(mousePos)) {
+      g.setColor(Color.GRAY);   // highlighted
+      g.fill(this);             // fill the Rectangle
     } else {
-      g.setColor(Color.WHITE);
+      g.setColor(Color.WHITE);  // normal
+      g.fill(this);
     }
-    g.fillRect(x, y, size, size);
     g.setColor(Color.BLACK);
-    g.drawRect(x, y, size, size);
+    g.draw(this);               // draw the outline
   }
 
   public boolean contains(Point p) {
-    if(p != null) {
-      return super.contains(p);
-    } else {
-      return false;
-    }
+    return (p != null) && super.contains(p);
   }
+
+  public int row() { return row; }
+  public int col() { return col; }
 }
